@@ -1,0 +1,128 @@
+﻿@using KARShop.Models;
+@model List<GioHang>
+@{
+    ViewBag.Title = "DatHang";
+    Layout = "~/Views/Shared/_LayoutCart.cshtml";
+}
+<h2 style="text-align:center">THÔNG TIN ĐƠN HÀNG</h2>
+<div class="small-container cart-page">
+    <table>
+        <tr>
+            <th>Sản phẩm</th>
+            <th>Số lương</th>
+            <th>Thành tiền</th>
+        </tr>
+        @foreach (var sp in Model)
+        {
+            <tr>
+                @using (Html.BeginForm("CapNhat", "GioHang", new { @iMaSp = sp.iMaSP }))
+                {
+                    <td>
+                        <div class="cart-info">
+                            <img src="~/IMG/sanpham/@sp.sAnhbia">
+                            <div>
+                                <p>@sp.sTenSP</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>@sp.iSoluong</td>
+                    <td>@sp.dThanhtien.ToString("#,##")₫</td>
+                }
+            </tr>
+        }
+    </table>
+    <div class="total-price">
+        <table>
+            @* <tr>
+                    <td>Đơn giá</td>
+                    <td>@ViewBag.Dongia</td>
+                </tr>
+                          <tr>
+                        <td>Tax</td>
+                        <td>25.00$</td>
+                    </tr>*@
+            <tr>
+                <td>Tổng tiền</td>
+                <td>@ViewBag.TongTien.ToString("#,##")₫</td>
+            </tr>
+        </table>
+    </div>
+
+    
+
+</div>
+
+
+@{
+    KHACHHANG kh = (KHACHHANG)Session["Taikhoan"];
+}
+<h2 style="text-align:center">THÔNG TIN ĐẶT HÀNG</h2>
+<div style="text-align:center">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            <div class="col-md-10">
+                <td>Họ tên:</td>
+                <td style="font-weight:bold">@kh.HoTen</td>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <td>Địa chỉ:</td>
+                <td style="font-weight:bold">@kh.DiachiKH</td>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <td>Điện thoại:</td>
+                <td style="font-weight:bold">@kh.DienthoaiKH</td>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <td>Ngày đặt:</td>
+                <td style="font-weight:bold">@DateTime.Now.ToShortDateString()</td>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <td>Ngày giao:</td>
+                <input type="date" name="Ngaygiao" />
+            </div>
+        </div>
+        <td><input type="Submit" value="ĐỒNG Ý ĐẶT HÀNG" class="btn" /></td>
+
+
+    }
+    <script src="https://www.paypal.com/sdk/js?client-id=AW-U7YecVzFMlm68TrORpXPFONJyQwl_amD-X86VM0FwIKEfVzvSLB7QngOZfnAI3FJDQqqt50xdNev-">
+    </script>
+    <div id="paypal-button-container"></div>
+    <script>
+         paypal.Buttons({
+         createOrder: function (data, actions) {
+         // This function sets up the details of the transaction, including the amount and line item details.
+         return actions.order.create({
+         purchase_units: [{
+         amount: {
+                 value: @ViewBag.TongTien
+             }
+         }]
+         });
+         },
+         onApprove: function (data, actions) {
+         // This function captures the funds from the transaction.
+         return actions.order.capture().then(function (details) {
+         // This function shows a transaction success message to your buyer.
+        alert('Thanh toán Paypal thành công bởi ' +
+        details.payer.name.given_name);
+         });
+         }
+         }).render('#paypal-button-container');
+ //This function displays Smart Payment Buttons on your web page.
+    </script>
+    <div class="total-price">
+        <a href="/GioHang/GioHang" class="btn">Trở về giỏ hàng</a>
+    </div>
+</div>
+

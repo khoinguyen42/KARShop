@@ -1,0 +1,62 @@
+﻿@using KARShop.Models;
+@model IEnumerable<SANPHAM>
+@{
+    ViewBag.Title = "Sptheotl";
+    Layout = "~/Views/Shared/_LayoutProduct.cshtml";
+}
+
+@*<div class="small-container">
+    <h2 class="title">SẢN PHẨM THEO THỂ LOẠI</h2>
+    <div class="row">
+        @foreach (var sp in Model)
+        {
+            <div class="col-4">
+                <a href="@Url.Action("ChitietSP", "KShop", new { id = sp.MaSP})">
+                    <img alt="@sp.TenSP" src="~/IMG/sanpham/@sp.Anhbia">
+                    <a href="products_detal.html"><h4>@sp.TenSP</h4></a>
+                    <div class="rating">
+                        <p class="pull-right">15 reviews</p>
+                        <p>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o"></i>
+                        </p>
+                    </div>
+                    <p>@sp.Giaban₫</p>
+            </div>
+        }
+    </div>
+</div>*@
+
+<div class="shop_grid_product_area">
+@*    @ (var tl in Model)
+    {
+        <h2 class="title">@tl.THELOAI.TenTheLoai</h2>
+    }*@
+
+
+    <div class="row">
+        @foreach (var sp in Model)
+        {
+
+            <div class="col-4">
+                <a href="@Url.Action("ChitietSP", "KShop", new { id = sp.MaSP})">
+                    <img alt="@sp.TenSP" src="~/IMG/sanpham/@sp.Anhbia">
+                    <a href="products_detal.html"><h4>@sp.TenSP</h4></a>
+                    <div class="rating">
+                        <p class="pull-right">15 reviews</p>
+                        <p>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o"></i>
+                        </p>
+                    </div>
+                    <p>@sp.Giaban$</p>
+            </div>
+        }
+    </div>
+</div>

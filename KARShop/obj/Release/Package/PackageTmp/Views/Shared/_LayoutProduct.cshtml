@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Kar Shop - Sản phẩm</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/core-style.css">
+    <link rel="stylesheet" href="~/Content/magnific-popup.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="/KShop/Home">
+                    <img src="~/images/logoK.png" width="125px" style="border-top:5px" />
+                </a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="/KShop/Home">Trang chủ</a></li>
+                    <li><a href="products.html">Giới thiệu</a></li>
+                    <li><a href="/KShop/pd">Sản phẩm</a></li>
+                    <li><a href="">Liên hệ</a></li>
+                    <li><a href="/User/DangKy">Account</a></li>
+                </ul>
+            </nav>
+            @Html.Action("GioHangPartial", "GioHang")
+        </div>
+    </div>
+    <section class="shop_grid_area section_padding_100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-4 col-lg-3">
+                    <div class="shop_sidebar_area">
+                        <div class="widget catagory mb-50">
+                            <!--  Side Nav  -->
+                            <div class="nav-side-menu">
+                                <h6 class="tile">Danh mục sản phẩm</h6>
+                                <div class="menu-list">
+                                    <ul id="menu-content2" class="menu-content collapse out">
+                                        <!-- Single Item -->
+                                        @Html.Action("Theloai", "KShop")
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-8 col-lg-9">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Download Our App</h3>
+                    <p>Download App for Android and ios mobile phone</p>
+                    <div class="app-logo">
+                        <img src="~/images/play-store.png">
+                        <img src="~/images/app-store.png">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img src="~/images/logoK.png">
+                    <p>
+                        Our Purpose Is To Sustainably Make the Pleasure and
+                        Benefits of Sports Accessible to the Many
+                    </p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li>Coupons</li>
+                        <li>Blog Post</li>
+                        <li>Return Policy</li>
+                        <li>Join Affiliate</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow us</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>Youtube </li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="Copyright">Copyright 2021</p>
+        </div>
+    </div>
+</body>
+</html>

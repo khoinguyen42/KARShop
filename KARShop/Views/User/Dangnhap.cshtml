@@ -1,0 +1,145 @@
+﻿@model KARShop.Models.KHACHHANG
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kar Shop - Login</title>
+    <link rel="stylesheet" href="~/Content/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="/KShop/Home">
+                    <img src="~/images/logoK.png" width="125px" />
+                </a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="/KShop/Home">Trang chủ</a></li>
+                    <li><a href="products.html">Giới thiệu</a></li>
+                    <li><a href="/KShop/Category">Sản phẩm</a></li>
+                    <li><a href="">Liên hệ</a></li>
+                    <li><a href="/Account/Login">Account</a></li>
+                </ul>
+            </nav>
+            @Html.Action("GioHangPartial", "GioHang")
+
+        </div>
+    </div>
+    <!-- ------------Account-page------------------- -->
+    <div class="account-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <img src="~/IMG/unnamed.jpg" width="100%">
+                </div>
+
+                <div class="col-2">
+                    <div class="form-container">
+                        <div class="form-btn">
+                            <span onclick="register()">Đăng Nhập</span>
+                            <h4 style="color:red; text-align:center">@ViewBag.Thongbao</h4>
+                            <hr id="Indicator">
+                        </div>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+
+                                <div class="col-md-10">
+                                    <input type="text" name="TenDN" placeholder="Tài khoản" value="@ViewData["Loi1"]" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="col-md-10">
+                                    <input type="password" name="Matkhau" placeholder="Mật khẩu" value="@ViewData["Loi2"]" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Đăng Nhập" class="btn btn-default" />
+                                </div>
+                            </div>
+                            <p>
+                                @Html.ActionLink("Chưa có tài khoản?", "DangKy")
+                            </p>
+                            @*                                 Enable this once you have account confirmation enabled for password reset functionality*@
+                            <p>
+                                @Html.ActionLink("Quên mật khẩu?", "ForgotPassword")
+                            </p>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ------------footer----------- -->
+    @*    <div class="col-md-4">
+            <section id="socialLoginForm">
+                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </section>
+        </div>*@
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Download Our App</h3>
+                    <p>Download App for Android and ios mobile phone</p>
+                    <div class="app-logo">
+                        <img src="~/images/play-store.png">
+                        <img src="~/images/app-store.png">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img src="~/images/logoK.png">
+                    <p>
+                        Our Purpose Is To Sustainably Make the Pleasure and
+                        Benefits of Sports Accessible to the Many
+                    </p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li>Coupons</li>
+                        <li>Blog Post</li>
+                        <li>Return Policy</li>
+                        <li>Join Affiliate</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow us</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>Youtube </li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="Copyright">Copyright 2021</p>
+        </div>
+    </div>
+
+</body>
+</html>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

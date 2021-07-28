@@ -1,0 +1,280 @@
+﻿@using KARShop.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<SANPHAM>
+
+
+@helper Truncate(string input, int length)
+{
+    if(input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
+}
+@{
+    ViewBag.Title = "Sanpham";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<style>
+    .MenuTrang ul {
+        list-style-type: none;
+        text-align: center;
+    }
+    .MenuTrang li {
+        display: inline-table;
+        margin: 30px 8px;
+        font-size: 15px;
+        font-weight: 500;
+        position: relative;
+
+    }
+        .MenuTrang li a {
+            padding: 8px 30px;
+            margin: 30px 0;
+            border-radius: 30px;
+            border: 1px solid purple;
+            opacity: 1;
+            transition: ease-in 0.30s;
+        }
+            .MenuTrang li a:hover {
+                background: purple;
+                color: black;
+            }
+    .MenuTrang p {
+        font-size: 20px;
+        text-align: right;
+    }
+        .MenuTrang p a {
+            text-decoration: none;
+            border: 1px solid black;
+            border-radius: 7px;
+        }
+</style>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title " style="text-align:center">QUẢN LÝ SẢN PHẨM</h4>
+                        <p class="card-category" style="text-align:center"> Đây là danh sách các sản phẩm</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary" style="text-align:center">
+                                <th style="width:250px">
+                                    Tên sản phẩm
+                                </th>
+                                <th style="width:100px">
+                                    Giá bán
+                                </th>
+                                <th style="width:250px">
+                                    Mô tả
+                                </th>
+                                <th>
+                                    Ảnh
+                                </th>
+                                <th style="width:100px">
+                                    Ngày cập nhật
+                                </th>
+                                <th>
+                                    SL tồn
+                                </th>
+                                <th>
+                                    Loại SP
+                                </th>
+                                <th style="width:150px"></th>
+                                </th>
+
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr style="text-align:center">
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TenSP)
+                                            </td>
+                                            <td class="text-primary">
+                                                @Html.DisplayFor(modelItem => item.Giaban)$
+                                            </td>
+                                            <td>
+                                                @Html.Raw(item.Mota)
+                                            </td>
+                                            <td>
+                                                <img src="@Url.Content("~/IMG/sanpham/" + item.Anhbia)" width="100px" height="100px" />
+                                            </td>
+                                            <td>
+                                                @String.Format("{0:dd/MM/yyyy }",item.Ngaycapnhat)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Soluongton)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.THELOAI.TenTheLoai)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Sửa", "Suasp", new { id = item.MaSP })|
+                                                @Html.ActionLink("Chi tiết", "Chitietsp", new { id = item.MaSP })|
+                                                @Html.ActionLink("Xóa", "Xoasp", new { id = item.MaSP })
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+                            <div class="MenuTrang">
+                                <p>
+                                    @Html.ActionLink("Thêm mới sản phẩm", "ThemmoiSP")
+                                </p>
+                                @Html.PagedListPager(Model, page => Url.Action("Sanpham", new { page }))
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+         @*   <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title mt-0"> Table on Plain Background</h4>
+                        <p class="card-category"> Here is a subtitle for this table</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Country
+                                </th>
+                                <th>
+                                    City
+                                </th>
+                                <th>
+                                    Salary
+                                </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            1
+                                        </td>
+                                        <td>
+                                            Dakota Rice
+                                        </td>
+                                        <td>
+                                            Niger
+                                        </td>
+                                        <td>
+                                            Oud-Turnhout
+                                        </td>
+                                        <td>
+                                            $36,738
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            2
+                                        </td>
+                                        <td>
+                                            Minerva Hooper
+                                        </td>
+                                        <td>
+                                            Curaçao
+                                        </td>
+                                        <td>
+                                            Sinaai-Waas
+                                        </td>
+                                        <td>
+                                            $23,789
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            3
+                                        </td>
+                                        <td>
+                                            Sage Rodriguez
+                                        </td>
+                                        <td>
+                                            Netherlands
+                                        </td>
+                                        <td>
+                                            Baileux
+                                        </td>
+                                        <td>
+                                            $56,142
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            4
+                                        </td>
+                                        <td>
+                                            Philip Chaney
+                                        </td>
+                                        <td>
+                                            Korea, South
+                                        </td>
+                                        <td>
+                                            Overland Park
+                                        </td>
+                                        <td>
+                                            $38,735
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            5
+                                        </td>
+                                        <td>
+                                            Doris Greene
+                                        </td>
+                                        <td>
+                                            Malawi
+                                        </td>
+                                        <td>
+                                            Feldkirchen in Kärnten
+                                        </td>
+                                        <td>
+                                            $63,542
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            6
+                                        </td>
+                                        <td>
+                                            Mason Porter
+                                        </td>
+                                        <td>
+                                            Chile
+                                        </td>
+                                        <td>
+                                            Gloucester
+                                        </td>
+                                        <td>
+                                            $78,615
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+        </div>
+    </div>
+</div>

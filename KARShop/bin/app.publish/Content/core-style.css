@@ -1,0 +1,266 @@
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+h6 {
+    color: #3a3a3a;
+    line-height: 1.2;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+}
+
+.section_padding_100 {
+    padding: 100px 0;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+nav {
+    flex: 1;
+    text-align: center;
+}
+
+    nav ul {
+        list-style-type: none;
+        text-align: center;
+    }
+
+        nav ul li {
+            display: inline-table;
+            width: 120px;
+            line-height: 25px;
+            position: relative;
+        }
+
+            nav ul li a {
+                display: block;
+                text-decoration: none;
+                color: black;
+                background: white;
+                padding: 15px 0px;
+            }
+
+        nav ul > li:hover > a {
+            background: black;
+            color: white;
+            transition: all 0.40s;
+        }
+
+        nav ul li .sub-menu {
+            display: none;
+            position: absolute;
+        }
+
+            nav ul li .sub-menu li a {
+                position: relative;
+                padding: 13px 20px 13px;
+                border-top: 2px solid white;
+            }
+
+                nav ul li .sub-menu li a::after {
+                    content: "\f0da";
+                    font-size: 13px;
+                    font-family: FontAwesome;
+                    position: absolute;
+                    right: 15px;
+                }
+
+        nav ul > li:hover .sub-menu {
+            display: block;
+        }
+.menu-list {
+    margin-top: 30px;
+}
+
+.menu-content li a {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: black;
+    border-radius: 10px;
+    background: white;
+    padding: 10px 0px;
+    height: 45px;
+    font-size: 13px;
+    border:2px;
+}
+
+.menu-content li:hover a{
+    background: black;
+    color: white;
+    transition: all 0.40s;
+}
+
+.menu-content li a::after{
+    content: "\f0da";
+    font-size: 13px;
+    font-family: FontAwesome;
+    position: absolute;
+    right: 15px;
+}
+
+
+.menu-list .menu-content {
+    display: block;
+}
+
+.container {
+    max-width: 1300px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.col-4 {
+    flex-basis: 25%;
+    padding: 10px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    transition: transform 0.5s;
+}
+
+    .col-4 img {
+        width: 100%;
+    }
+
+    .col-4 a {
+        text-decoration: none;
+        color: #555;
+    }
+
+.title {
+    text-align: center;
+    margin: 0 auto 80px;
+    position: relative;
+    line-height: 60px;
+    color: #555;
+}
+
+    .title::after {
+        content: '';
+        background: black;
+        width: 80px;
+        height: 5px;
+        border-radius: 5px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+h4 {
+    color: #555;
+    font-weight: normal;
+}
+
+.col-4 p {
+    font-size: 14px;
+}
+
+.rating .fa {
+    color: black;
+}
+
+.col-4:hover {
+    transform: translateY(-5px);
+}
+/* --------- offer ---------- */
+.offer {
+    background: radial-gradient(#fff,#ffd6d6);
+    margin-top: 80px;
+    padding: 35px 0;
+}
+
+.col-2 .offer-img {
+    padding: 50px;
+}
+
+small {
+    color: #555;
+}
+.footer {
+    background: #000;
+    color: #8a8a8a;
+    font-size: 14px;
+    padding: 60px 0 20px;
+}
+
+    .footer p {
+        color: #8a8a8a;
+    }
+
+    .footer h3 {
+        color: #fff;
+    }
+
+.footer-col-1, .footer-col-2, .footer-col-3, .footer-col-4 {
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+
+.footer-col-1 {
+    flex-basis: 30%;
+}
+
+.footer-col-2 {
+    flex: 1;
+    text-align: center;
+}
+
+    .footer-col-2 img {
+        width: 180px;
+        margin-bottom: 20px;
+    }
+
+.footer-col-3, .footer-col-4 {
+    flex-basis: 12%;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.app-logo {
+    margin-top: 20px;
+}
+
+    .app-logo img {
+        width: 140px;
+    }
+
+.footer hr {
+    border: none;
+    background: #b5b5b5;
+    height: 1px;
+    margin: 20px 0;
+}
+
+.Copyright {
+    text-align: center;
+}
+
+.menu-icon {
+    width: 28px;
+    margin-left: 20px;
+    display: none;
+}

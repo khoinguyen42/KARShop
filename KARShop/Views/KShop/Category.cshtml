@@ -1,0 +1,54 @@
+﻿@using PagedList.Mvc
+@model PagedList.PagedList<KARShop.Models.SANPHAM>
+@{
+    ViewBag.Title = "pd";
+    Layout = "~/Views/Shared/_LayoutProduct.cshtml";
+}
+
+<div class="shop_grid_product_area">
+    <h2 class="title">Tất cả sản phẩm</h2>
+    <div class="row">
+        @foreach (var sp in Model)
+        {
+            <div class="col-4">
+                <a href="@Url.Action("ChitietSP", "KShop", new { id = sp.MaSP})">
+                    <img alt="@sp.TenSP" src="~/IMG/sanpham/@sp.Anhbia">
+                    <a href="products_detal.html"><h4>@sp.TenSP</h4></a>
+                    <div class="rating">
+                        <p class="pull-right">15 reviews</p>
+                        <p>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o"></i>
+                        </p>
+                    </div>
+                    <p>@sp.Giaban₫</p>
+            </div>
+        }
+    </div>
+</div>
+
+
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Category", new { page }))
+</div>
+<style>
+    .MenuTrang li a {
+        display: block;
+        text-decoration: none;
+        color: black;
+@*        border: 2px solid black;*@
+        border-radius: 5px;
+    }
+    .MenuTrang ul{
+        text-align:center;
+    }
+    .MenuTrang li {
+        display: inline-table;
+        margin-top: -10px;
+        width: 40px;
+        height: 40px;
+    }
+</style>
